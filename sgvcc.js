@@ -10,7 +10,9 @@ function colorCountries() {
   //iterate through countries, and call fillSvgElement for each
   for(var i=0;i<countries.length;i++) {
     if(countries[i] != undefined && countries[i].length == 2) {
-      fillSvgElement(svgDocumentObject.getElementById(countries[i][0]), getColor(countries[i][1]), getOpacity(countries[i][1]));
+      var color = getColor(countries[i][1]);
+      var svgo = svgDocumentObject.getElementById(countries[i][0]);
+      fillSvgElement(svgo, color, getOpacity(countries[i][1]));
     }
   }
 }
