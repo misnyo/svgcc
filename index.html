@@ -8,7 +8,7 @@ var countries = [['hu', '0.4'], ['ru', '-0.3'], ['us', '-0.9'], ['gb', '0']];
 //register svg object, and start coloring
 var svgDocumentObject;
 function registerSvg(o) {
-  svgDocumentObject = o.contentDocument; //get the inner DOM of alpha.svg
+  svgDocumentObject = o.contentDocument;
   colorCountries();
 }
 
@@ -21,19 +21,18 @@ function colorCountries() {
   }
 }
 
-function countryClicked(c) {
-  fillSvgElement(svgDocumentObject.getElementById(document.getElementById("countryId").value), getColor(1), getOpacity(0.8));
-}
-
 function getColor(n) {
-  //orange means error
+  //neutral
   if(n==0)
     return "#ffffff";
+  //good
   else if(n>0)
     return "#00ff00";
+  //bad
   else if(n<0)
     return "#ff0000";
 }
+
 function getOpacity(n) {
   //dont die if error
   if(n>1 || n<-1 || n==0)
@@ -49,6 +48,3 @@ function fillSvgElement(e, color, opacity) {
   e.setAttribute("style","fill:"+color+";opacity:"+opacity+";");
 }
 </script>
-
-<input type="text" value="hu" id="countryId" />
-<input type="button" value="doit" onclick="countryClicked();" />
